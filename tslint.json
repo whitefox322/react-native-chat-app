@@ -1,0 +1,19 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint-config-standard"
+  ],
+  "rules": {
+    "semicolon": [
+      true,
+      "always"
+    ],
+    "ter-indent": [
+      false
+    ],
+    "indent": [
+      true,
+      "tabs"
+    ]
+  }
+}
