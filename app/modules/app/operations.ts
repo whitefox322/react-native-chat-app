@@ -1,14 +1,15 @@
-import { imagesLoaded, initialized } from './actions';
+import {imagesLoaded, initialized, userChosen} from './actions';
 
-export const initialize = () => async (dispatch, getState) => {
-	const { chosenUser } = getState().app;
+const initialize = () => async (dispatch, getState) => {
+    const {chosenUser} = getState().app;
 
-	if (chosenUser) {
-		dispatch(initialized(true));
-	}
+    if (chosenUser) {
+        dispatch(initialized(true));
+    }
 };
 
 export default {
-	initialize,
-	imagesLoaded
+    initialize,
+    imagesLoaded,
+    userChosen
 };

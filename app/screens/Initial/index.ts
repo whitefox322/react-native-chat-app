@@ -1,9 +1,24 @@
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
+import {compose, withHandlers, hoistStatics} from 'recompose';
 
+import { appOperations } from '../../modules/app';
 import InitialScreen from './InitialScreen';
 
+const setChosenUser = ({dispatch}) => async (id) => {
+    await dispatch(appOperations.userChosen(id));
+
+    dispatch(appOperations.initialize());
+};
+
 const mapStateToProps = state => ({
-	users: state.app.initialUsers,
+    users: state.app.initialUsers,
 });
 
-export default connect(mapStateToProps)(InitialScreen);
+const enhance = compose(
+    connect(mapStateToProps),
+    withHandlers({
+        setChosenUser
+    })
+);
+
+export default hoistStatics(enhance)(InitialScreen);
