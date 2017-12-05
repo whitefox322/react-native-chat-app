@@ -11,7 +11,7 @@ let store = null;
 const config = {
 	key: 'root',
 	storage,
-	whitelist: [],
+	whitelist: ['initial']
 };
 
 const reducer = persistCombineReducers(config, appReducer);
