@@ -10,7 +10,7 @@ const initialState = {
 	testUser: {
 		id: uuid(),
 		name: 'Test User',
-		icon: require('../../assets/icons/user.png')
+		icon: require('../../assets/icons/testUser.png')
 	},
 	chosenUser: null
 };

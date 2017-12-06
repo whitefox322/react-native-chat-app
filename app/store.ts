@@ -11,7 +11,7 @@ let store = null;
 const config = {
 	key: 'root',
 	storage,
-	whitelist: ['initial']
+	whitelist: []
 };
 
 const reducer = persistCombineReducers(config, appReducer);
@@ -21,14 +21,14 @@ if (__DEV__) {
 		reducer,
 		{},
 		composeWithDevTools(
-			applyMiddleware(thunk),
-		),
+			applyMiddleware(thunk)
+		)
 	);
 } else {
 	store = createStore(
 		reducer,
 		{},
-		applyMiddleware(thunk),
+		applyMiddleware(thunk)
 	);
 }
 

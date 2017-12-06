@@ -15,6 +15,10 @@ const styles = StyleSheet.create({
 		backgroundColor: colors.white,
 		padding: 16,
 		borderRadius: 8
+	},
+	bg: {
+		flex: 1,
+		backgroundColor: colors.bg
 	}
 });
 

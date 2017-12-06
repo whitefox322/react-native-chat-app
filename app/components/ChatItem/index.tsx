@@ -9,7 +9,7 @@ import { styles } from '../../styles';
 interface IChatItemProps {
 	name: string;
 	icon: any;
-	status: boolean;
+	status: string;
 	lastMessage: {
 		text: string;
 		time: number;

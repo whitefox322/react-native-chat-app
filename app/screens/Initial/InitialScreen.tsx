@@ -1,7 +1,8 @@
 import React from 'react';
 import {
 	View,
-	Text
+	Text,
+	Button
 } from 'react-native';
 
 import { UserItem } from '../../components';
@@ -9,11 +10,11 @@ import { headerStyle, headerTitleStyle } from '../../styles';
 import s from './styles';
 
 interface InitialScreenProps {
-	users: Array<{
+	user: {
 		id: string;
 		name: string;
 		icon: any;
-	}>;
+	};
 	setChosenUser: (id: string) => void;
 }
 
@@ -36,6 +37,10 @@ const InitialScreen: any = (props: InitialScreenProps) => {
 			<Text style={s.text}>
 				or login via Facebook
 			</Text>
+			<Button
+				onPress={() => props.setChosenUser(123)}
+				title='Facebook Login'
+			/>
 		</View>
 	);
 };

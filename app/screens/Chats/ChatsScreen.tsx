@@ -8,7 +8,7 @@ import {
 import Modal from 'react-native-modal';
 import R from 'ramda';
 
-import { ListSeparator, ChatItem, BackgroundImage } from '../../components';
+import { ListSeparator, ChatItem } from '../../components';
 import { headerStyle, headerTitleStyle } from '../../styles';
 import s from './styles';
 
@@ -20,16 +20,17 @@ interface IChatsProps {
 	};
 	status: string;
 	showModal: boolean;
-	toggleShowModal: () => void;
-	removeChat: (id: string) => void;
+	toggleShowModal: (id: string) => void;
+	removeChat: () => void;
 	navigation: any;
+	goToChat: (chat: any) => void;
 }
 
 const ChatsScreen: any = (props: IChatsProps) => {
-	const { chats, lastMessage, status, navigation, showModal, toggleShowModal, removeChat } = props;
+	const { chats, lastMessage, status, goToChat, showModal, toggleShowModal, removeChat } = props;
 
 	return (
-		<View>
+		<View style={s.bg}>
 			{
 				chats.length === 0 ?
 					<Text style={s.empty}>No chats yet</Text> :
@@ -42,7 +43,7 @@ const ChatsScreen: any = (props: IChatsProps) => {
 						)}
 						ListFooterComponent={(<ListSeparator/>)}
 						renderItem={({ item }) => <ChatItem
-							onPress={() => navigation.navigate('Chat', { chat: item })}
+							onPress={() => goToChat(item)}
 							onLongPress={() => toggleShowModal(item.id)}
 							lastMessage={lastMessage}
 							status={status > item.lastVisit ? 'unread' : 'read'}

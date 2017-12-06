@@ -34,13 +34,11 @@ const createPersist = () => new Promise((res) => {
 
 const enhance = withHandlers({
 	asyncJob: () => async () => {
-		await Promise.all([
-			Font.loadAsync({
+		await	Font.loadAsync({
 				'work-sans': require('../assets/fonts/WorkSans.ttf'),
 				'acme': require('../assets/fonts/Acme.ttf')
-			}),
-			createPersist()
-		]);
+			});
+		await createPersist();
 
 		store.dispatch(appOperations.initialize());
 	},
@@ -48,7 +46,7 @@ const enhance = withHandlers({
 	jobError: props => error => {
 		console.warn(error);
 		props.dispatch(appOperations.imagesLoaded(true));
-	},
+	}
 });
 
 export default enhance(NavigatorView);
